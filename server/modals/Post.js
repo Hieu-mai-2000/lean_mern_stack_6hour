@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const schema = new Schema(
@@ -6,16 +7,20 @@ const schema = new Schema(
       type: String,
       required: true,
     },
-    description: String,
-    url: String,
+    description: {
+      type: String,
+    },
+    url: {
+      type: String,
+    },
     status: {
       type: String,
       enum: ['TO LEARNING', 'LEARNING', 'LEARNED'],
     },
-    user:{
+    user: {
       type: Schema.Types.ObjectId,
-      ref:'users'
-    }
+      ref: 'user6h',
+    },
   },
   { timestamps: true }
 )

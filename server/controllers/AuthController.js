@@ -21,7 +21,7 @@ const register = async (req, res) => {
     await newUser.save()
 
     const accessToken = jwt.sign(
-      { username: newUser.username },
+      { userId: newUser._id, username: newUser.username },
       process.env.ACCESS_TOKEN_SECRET
     )
     res.json({
@@ -59,7 +59,7 @@ const login = async (req, res) => {
         .json({ success: false, message: 'Missing username or password' })
 
     const accessToken = jwt.sign(
-      { username: user.username },
+      { userId: user._id, username: user.username },
       process.env.ACCESS_TOKEN_SECRET
     )
     res.json({
@@ -75,4 +75,26 @@ const login = async (req, res) => {
   }
 }
 
-module.exports = { register, login }
+const loadUser = async (req, res) => {
+
+  try {
+      const user = await UserModel.findById(req.userId)
+      if (!user)
+        res.status(400).json({ success: false, message: 'User not found' })
+      res.json({
+        success: true,
+        message: 'user authenticated',
+        username: user.username,
+      })
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error:' + error.message,
+    })
+  }
+
+
+}
+
+module.exports = { register, login, loadUser }

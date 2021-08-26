@@ -1,0 +1,47 @@
+
+POST  http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "jim",
+  "password": "jim"
+}
+###
+POST   http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username" : "jim",
+  "password":"jim"
+}
+
+###
+
+POST  http://localhost:5000/api/post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI1YjY3MDFkNDVlOTFmODk3YWVhNzkiLCJ1c2VybmFtZSI6ImppbSIsImlhdCI6MTYyOTg2MTQ5Mn0.cEx7a4dPPDXrvOjfCP3XkbYyyVAqy_p_aGLtsuqy2k8
+
+{
+  "title": "title123",
+  "description" :"description123",
+  "url" : "javascript.com"
+}
+
+###
+GET http://localhost:5000/api/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI1YjY3MDFkNDVlOTFmODk3YWVhNzkiLCJ1c2VybmFtZSI6ImppbSIsImlhdCI6MTYyOTg2MTQ5Mn0.cEx7a4dPPDXrvOjfCP3XkbYyyVAqy_p_aGLtsuqy2k8
+
+###
+PUT http://localhost:5000/api/post/6125b6871d45e91f897aea7c
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI1YjY3MDFkNDVlOTFmODk3YWVhNzkiLCJ1c2VybmFtZSI6ImppbSIsImlhdCI6MTYyOTg2MTQ5Mn0.cEx7a4dPPDXrvOjfCP3XkbYyyVAqy_p_aGLtsuqy2k8
+
+{
+  "title":"title",
+  "description":"description",
+  "url":"redux.com"
+}
+
+###
+DELETE  http://localhost:5000/api/post/6125b6871d45e91f897aea7c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI1YjY3MDFkNDVlOTFmODk3YWVhNzkiLCJ1c2VybmFtZSI6ImppbSIsImlhdCI6MTYyOTg2MTQ5Mn0.cEx7a4dPPDXrvOjfCP3XkbYyyVAqy_p_aGLtsuqy2k8
